@@ -38,7 +38,7 @@
 
      while (roundsPlayed < rounds) {
        let playerSelection = prompt('Rock! Paper! Scissors!');
-       playerSelection = playerSelection.toUppercase();
+       playerSelection = playerSelection.toUpperCase();
        if ((playerSelection != 'ROCK') &&
        (playerSelection != 'PAPER') &&
        (playerSelection != 'SCISSORS'))
@@ -62,6 +62,10 @@
        console.log(`You won ${playerScore} out of ${roundsPlayed} rounds. You lost!`);
      }
    }
+
+   computerPlay();
+   playRound();
+   game();
   </script>
 </body>
 </html>
