@@ -12,7 +12,56 @@
 </head>
 <body>
   <script>
-   
+    function computerPlay() {
+      let choices = ['ROCK', 'PAPER', 'SCISSORS'];
+      return choices[Math.floor(Math.random() * choices.length)]
+    }
+
+   function playRound(playerSelection, computerSelection) {
+     let points = 0;
+     if ((playerSelection == 'ROCK' && computerSelection == 'SCISSORS') ||
+     (playerSelection == 'SCISSORS' && computerSelection == 'ROCK') ||
+     (playerSelection == 'PAPER' && computerSelection == 'ROCK'))
+     {
+       points = 1;
+       console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+     } else {
+       console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+     }
+
+       return points;
+     }
+
+   function game(rounds = 5) {
+     let roundsPlayed = 0;
+     let playerScore = 0;
+
+     while (roundsPlayed < rounds) {
+       let playerSelection = prompt('Rock! Paper! Scissors!');
+       playerSelection = playerSelection.toUppercase();
+       if ((playerSelection != 'ROCK') &&
+       (playerSelection != 'PAPER') &&
+       (playerSelection != 'SCISSORS'))
+       { continue }
+
+       let computerSelection = computerPlay();
+       if (playerSelection == computerSelection) {
+         console.log(`It's a tie! You both chose ${playerSelection}`)
+         continue
+       }
+
+       playerScore += playRound(playerSelection, computerSelection);
+       roundsPlayed++;
+
+     }
+     if (playerScore > (roundsPlayed / 2)) {
+       console.log(`You won ${playerScore} out of ${roundsPlayed} rounds. You win!`);
+     } else if (playerScore == (roundsPlayed / 2)) {
+       console.log(`You won ${playerScore} out of ${roundsPlayed} rounds. You tied.`);
+     } else {
+       console.log(`You won ${playerScore} out of ${roundSPlayed} rounds. You lost!`);
+     }
+   }
   </script>
 </body>
 </html>
